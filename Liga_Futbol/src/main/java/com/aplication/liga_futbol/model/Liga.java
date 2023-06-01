@@ -2,7 +2,6 @@ package com.aplication.liga_futbol.model;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -15,8 +14,7 @@ import org.springframework.stereotype.Component;
 public class Liga {
 	private int id;
 	private String nombre;
-	@Autowired
-	private List<Equipo> equipos;
+	private List<Integer> idEquipos;
 
 	/**
 	 * Constructor por defecto
@@ -24,19 +22,22 @@ public class Liga {
 	public Liga() {
 	}
 
+	
+
 	/**
 	 * Constructor parametrizado
 	 * 
 	 * @param id      representa el id de la liga de futbol
 	 * @param nombre  representa el nombre de la liga de futbol
-	 * @param equipos representa la lista de equipos que conforman la liga de
-	 *                futbol.
+	 * @param idEquipos representa la lista de id de equipos que forman parte de la liga
 	 */
-	public Liga(int id, String nombre, List<Equipo> equipos) {
+	public Liga(int id, String nombre, List<Integer> idEquipos) {
 		this.id = id;
 		this.nombre = nombre;
-		this.equipos = equipos;
+		this.idEquipos = idEquipos;
 	}
+
+
 
 	public int getId() {
 		return id;
@@ -54,17 +55,24 @@ public class Liga {
 		this.nombre = nombre;
 	}
 
-	public List<Equipo> getEquipos() {
-		return equipos;
+
+
+	public List<Integer> getIdEquipos() {
+		return idEquipos;
 	}
 
-	public void setEquipos(List<Equipo> equipos) {
-		this.equipos = equipos;
+
+
+	public void setIdEquipos(List<Integer> idEquipos) {
+		this.idEquipos = idEquipos;
 	}
+
+
 
 	@Override
 	public String toString() {
-		return "Liga [id=" + id + ", nombre=" + nombre + ", equipos=" + equipos + "]";
+		return "Liga [id=" + id + ", nombre=" + nombre + ", idEquipos=" + idEquipos + "]";
 	}
+
 
 }
