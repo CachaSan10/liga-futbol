@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.aplication.liga_futbol.model;
 
 import org.springframework.stereotype.Component;

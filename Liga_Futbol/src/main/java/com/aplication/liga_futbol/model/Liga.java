@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.aplication.liga_futbol.model;
 
 import java.util.List;
