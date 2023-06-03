@@ -12,9 +12,14 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class Liga {
+	//Representa el id de la liga
 	private int id;
+	//Representa el nombre de la liga
 	private String nombre;
-	private List<Integer> idEquipos;
+	//Representa el pais donde se ubica la liga
+	private String pais;
+	//Representa la lista de equipo que compiten en la liga
+	private List<Equipo> equipos;
 
 	/**
 	 * Constructor por defecto
@@ -22,57 +27,89 @@ public class Liga {
 	public Liga() {
 	}
 
-	
-
 	/**
-	 * Constructor parametrizado
+	 * Constructor Parametrizado
 	 * 
-	 * @param id      representa el id de la liga de futbol
-	 * @param nombre  representa el nombre de la liga de futbol
-	 * @param idEquipos representa la lista de id de equipos que forman parte de la liga
+	 * @param id      representa el id de la liga.
+	 * @param nombre  representa el nombre de la liga.
+	 * @param pais    representa el pais donde se ubica la liga.
+	 * @param equipos representa los equipos que compiten en la liga.
 	 */
-	public Liga(int id, String nombre, List<Integer> idEquipos) {
+	public Liga(int id, String nombre, String pais, List<Equipo> equipos) {
 		this.id = id;
 		this.nombre = nombre;
-		this.idEquipos = idEquipos;
+		this.pais = pais;
+		this.equipos = equipos;
 	}
 
-
-
+	
+	/**
+	 * Metodo que retorna el id de la liga
+	 * @return the id
+	 */
 	public int getId() {
 		return id;
 	}
 
+	/**
+	 * Metodo que modifica el id de la liga.
+	 * @param id the id to set
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	/**
+	 * Metodo que retorna el nombre de la liga.
+	 * @return the nombre
+	 */
 	public String getNombre() {
 		return nombre;
 	}
 
+	/**
+	 * Metodo que modifica el nombre de la liga.
+	 * @param nombre the nombre to set
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
-
-
-	public List<Integer> getIdEquipos() {
-		return idEquipos;
+	/**
+	 * Metodo que retorna el pais donde se ubica la liga.
+	 * @return the pais
+	 */
+	public String getPais() {
+		return pais;
 	}
 
-
-
-	public void setIdEquipos(List<Integer> idEquipos) {
-		this.idEquipos = idEquipos;
+	/**
+	 * Metodo que modifica el pais donde se ubica la liga.
+	 * @param pais the pais to set
+	 */
+	public void setPais(String pais) {
+		this.pais = pais;
 	}
 
+	/**
+	 * Metodo que retorna la lista de equipos que compiten en la liga.
+	 * @return the equipos
+	 */
+	public List<Equipo> getEquipos() {
+		return equipos;
+	}
 
+	/**
+	 * Metodo que modifica la lista de equipo que compiten en la liga.
+	 * @param equipos the equipos to set
+	 */
+	public void setEquipos(List<Equipo> equipos) {
+		this.equipos = equipos;
+	}
 
 	@Override
 	public String toString() {
-		return "Liga [id=" + id + ", nombre=" + nombre + ", idEquipos=" + idEquipos + "]";
+		return "Liga [id=" + id + ", nombre=" + nombre + ", pais=" + pais + ", equipos=" + equipos + "]";
 	}
-
 
 }

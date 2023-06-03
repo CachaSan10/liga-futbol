@@ -15,9 +15,11 @@ public class Equipo {
 	private int id;
 	private String nombre;
 	private LocalDate FechaFundacion;
-	private int idEstadio;
+	private Estadio estadio;
 	private int cantidadSocios;
-	private int idLiga;
+	private String provincia;
+	private String pais;
+	private Liga liga;
 
 	/**
 	 * Constructor por defecto
@@ -26,23 +28,25 @@ public class Equipo {
 	}
 
 	/**
-	 * Constructor Parametrizado
-	 * 
 	 * @param id             representa el id del equipo.
-	 * @param nombre         representa el nombre del equipo.
+	 * @param nombre         representa el nombre del equipo;
 	 * @param fechaFundacion representa la fecha de fundacion del equipo.
-	 * @param idEstadio      representa el id del estadio de futbol del equipo.
-	 * @param cantidadSocios representa la cantidad de socios que tiene el equipo.
-	 * @param idLiga         representa el id de la liga en la cual compite el
-	 *                       equipo.
+	 * @param estadio        representa el estadio del equipo.
+	 * @param cantidadSocios representa la cantidad de socios que posee el equipo.
+	 * @param provincia      representa la provincia en donde se ubica el equipo.
+	 * @param pais           representa el pais donde se ubica el equipo.
+	 * @param liga           representa la liga donde compite el equipo.
 	 */
-	public Equipo(int id, String nombre, LocalDate fechaFundacion, int idEstadio, int cantidadSocios, int idLiga) {
+	public Equipo(int id, String nombre, LocalDate fechaFundacion, Estadio estadio, int cantidadSocios,
+			String provincia, String pais, Liga liga) {
 		this.id = id;
 		this.nombre = nombre;
 		FechaFundacion = fechaFundacion;
-		this.idEstadio = idEstadio;
+		this.estadio = estadio;
 		this.cantidadSocios = cantidadSocios;
-		this.idLiga = idLiga;
+		this.provincia = provincia;
+		this.pais = pais;
+		this.liga = liga;
 	}
 
 	public int getId() {
@@ -69,12 +73,12 @@ public class Equipo {
 		FechaFundacion = fechaFundacion;
 	}
 
-	public int getIdEstadio() {
-		return idEstadio;
+	public Estadio getEstadio() {
+		return estadio;
 	}
 
-	public void setIdEstadio(int idEstadio) {
-		this.idEstadio = idEstadio;
+	public void setEstadio(Estadio estadio) {
+		this.estadio = estadio;
 	}
 
 	public int getCantidadSocios() {
@@ -85,18 +89,35 @@ public class Equipo {
 		this.cantidadSocios = cantidadSocios;
 	}
 
-	public int getIdLiga() {
-		return idLiga;
+	public String getProvincia() {
+		return provincia;
 	}
 
-	public void setIdLiga(int idLiga) {
-		this.idLiga = idLiga;
+	public void setProvincia(String provincia) {
+		this.provincia = provincia;
+	}
+
+	public String getPais() {
+		return pais;
+	}
+
+	public void setPais(String pais) {
+		this.pais = pais;
+	}
+
+	public Liga getLiga() {
+		return liga;
+	}
+
+	public void setLiga(Liga liga) {
+		this.liga = liga;
 	}
 
 	@Override
 	public String toString() {
-		return "Equipo [id=" + id + ", nombre=" + nombre + ", FechaFundacion=" + FechaFundacion + ", idEstadio="
-				+ idEstadio + ", cantidadSocios=" + cantidadSocios + ", idLiga=" + idLiga + "]";
+		return "Equipo [id=" + id + ", nombre=" + nombre + ", FechaFundacion=" + FechaFundacion + ", estadio=" + estadio
+				+ ", cantidadSocios=" + cantidadSocios + ", provincia=" + provincia + ", pais=" + pais + ", liga="
+				+ liga + "]";
 	}
 
 }
