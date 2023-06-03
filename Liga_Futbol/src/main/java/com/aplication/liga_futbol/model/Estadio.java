@@ -1,5 +1,6 @@
 package com.aplication.liga_futbol.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -15,12 +16,13 @@ public class Estadio {
 	private int id;
 	//Representa el nombre del estadio
 	private String nombre;
-	//Representa la cantidad de personas que puede contener el estadio
-	private int capacidad;
+	//Representa la cantidad de personas que puede albergar el estadio
+	private int capacidadPersona;
 	//Representa la direccion donde se ubica el estadio
 	private String direccion;
-	//Representa el equipo el cual es dueño del estadio
-	private Equipo equipo;
+	//Representa el club que le pertenece el estadio
+	@Autowired
+	private Club club;
 
 	/**
 	 * Constructor por defecto
@@ -28,23 +30,28 @@ public class Estadio {
 	public Estadio() {
 	}
 
+	
+
+	
 	/**
 	 * Constructor Parametrizado
 	 * @param id representa el id del estadio.
 	 * @param nombre representa el nombre del estadio.
-	 * @param capacidad representa la cantidad de personas que puede contener el estadio.
+	 * @param capacidadPersona representa la cantidad de personas que puede albergar el estadio.
 	 * @param direccion representa la direccion en donde se ubica el estadio.
-	 * @param equipo representa el equipo el cual es dueño del estadio.
+	 * @param club representa el club que le pertenece el estadio.
 	 */
-	public Estadio(int id, String nombre, int capacidad, String direccion, Equipo equipo) {
+	public Estadio(int id, String nombre, int capacidadPersona, String direccion, Club club) {
 		this.id = id;
 		this.nombre = nombre;
-		this.capacidad = capacidad;
+		this.capacidadPersona = capacidadPersona;
 		this.direccion = direccion;
-		this.equipo = equipo;
+		this.club = club;
 	}
 
-	
+
+
+
 	/**
 	 * Metodo que retorna el id del estadio.
 	 * @return the id del estadio.
@@ -78,19 +85,19 @@ public class Estadio {
 	}
 
 	/**
-	 * Metodo que retorna la cantidad de personas que puede contener el estadio.
-	 * @return the capacidad
+	 * Metodo que retorna la cantidad de personas que puede albergar el estadio.
+	 * @return the capacidadPersona
 	 */
 	public int getCapacidad() {
-		return capacidad;
+		return capacidadPersona;
 	}
 
 	/**
-	 * Metodo que modifica la cantidad de personas que puede contener el estadio.
-	 * @param capacidad the capacidad to set
+	 * Metodo que modifica la cantidad de personas que puede albergar el estadio.
+	 * @param capacidadOPersona the capacidad to set
 	 */
-	public void setCapacidad(int capacidad) {
-		this.capacidad = capacidad;
+	public void setCapacidad(int capacidadPersona) {
+		this.capacidadPersona = capacidadPersona;
 	}
 
 	/**
@@ -110,25 +117,26 @@ public class Estadio {
 	}
 
 	/**
-	 * Metodo que retorna el equipo el cual es dueño del estadio.
-	 * @return the equipo
+	 * Metodo que retorna el club que le pertenece el estadio.
+	 * @return the club
 	 */
-	public Equipo getEquipo() {
-		return equipo;
+	public Club getClub() {
+		return club;
 	}
 
 	/**
-	 * Metodo que modifica el equipo el cual es dueño del estadio.
-	 * @param equipo the equipo to set
+	 * Metodo que modifica el club que le pertenece el estadio.
+	 * @param club the club to set
 	 */
-	public void setEquipo(Equipo equipo) {
-		this.equipo = equipo;
+	public void setClub(Club club) {
+		this.club = club;
 	}
 
 	@Override
 	public String toString() {
-		return "Estadio [id=" + id + ", nombre=" + nombre + ", capacidad=" + capacidad + ", direccion=" + direccion
-				+ ", equipo=" + equipo + "]";
+		return "Estadio [id=" + id + ", nombre=" + nombre + ", capacidadPersona=" + capacidadPersona + ", direccion=" + direccion
+				+ ", club=" + club + "]";
 	}
+
 
 }

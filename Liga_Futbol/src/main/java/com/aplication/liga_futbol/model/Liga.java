@@ -2,6 +2,7 @@ package com.aplication.liga_futbol.model;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -18,8 +19,9 @@ public class Liga {
 	private String nombre;
 	//Representa el pais donde se ubica la liga
 	private String pais;
-	//Representa la lista de equipo que compiten en la liga
-	private List<Equipo> equipos;
+	//Representa la lista de club que compiten en la liga
+	@Autowired
+	private List<Club> clubes;
 
 	/**
 	 * Constructor por defecto
@@ -27,22 +29,29 @@ public class Liga {
 	public Liga() {
 	}
 
+	
+	
+
+	
 	/**
 	 * Constructor Parametrizado
 	 * 
 	 * @param id      representa el id de la liga.
 	 * @param nombre  representa el nombre de la liga.
 	 * @param pais    representa el pais donde se ubica la liga.
-	 * @param equipos representa los equipos que compiten en la liga.
+	 * @param clubes  representa la lista de club que compiten en la liga.
 	 */
-	public Liga(int id, String nombre, String pais, List<Equipo> equipos) {
+	public Liga(int id, String nombre, String pais, List<Club> clubes) {
 		this.id = id;
 		this.nombre = nombre;
 		this.pais = pais;
-		this.equipos = equipos;
+		this.clubes = clubes;
 	}
 
-	
+
+
+
+
 	/**
 	 * Metodo que retorna el id de la liga
 	 * @return the id
@@ -91,25 +100,31 @@ public class Liga {
 		this.pais = pais;
 	}
 
-	/**
-	 * Metodo que retorna la lista de equipos que compiten en la liga.
-	 * @return the equipos
-	 */
-	public List<Equipo> getEquipos() {
-		return equipos;
-	}
 
 	/**
-	 * Metodo que modifica la lista de equipo que compiten en la liga.
-	 * @param equipos the equipos to set
+	 * Metodo que retorna la lista de club que compiten en la liga
+	 * @return the clubes
 	 */
-	public void setEquipos(List<Equipo> equipos) {
-		this.equipos = equipos;
+	public List<Club> getClubes() {
+		return clubes;
 	}
+
+
+	/**
+	 * Metodo que modifica la lista de club que compiten en la liga
+	 * @param clubes the clubes to set
+	 */
+	public void setClubes(List<Club> clubes) {
+		this.clubes = clubes;
+	}
+
 
 	@Override
 	public String toString() {
-		return "Liga [id=" + id + ", nombre=" + nombre + ", pais=" + pais + ", equipos=" + equipos + "]";
+		return "Liga [id=" + id + ", nombre=" + nombre + ", pais=" + pais + ", clubes=" + clubes + "]";
 	}
 
+	
+
+	
 }
