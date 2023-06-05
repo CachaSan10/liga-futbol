@@ -5,6 +5,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
 /**
  * Esta clase representa una liga de futbol en el sistema.
  * 
@@ -12,15 +23,28 @@ import org.springframework.stereotype.Component;
  *
  */
 @Component
+@Entity
+@Table(name="Ligas")
 public class Liga {
+	
 	//Representa el id de la liga
+	@Id
+	@Column(name="liga_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
 	//Representa el nombre de la liga
+	@Column(name = "nombre")
 	private String nombre;
+	
 	//Representa el pais donde se ubica la liga
+	@Column(name = "pais")
 	private String pais;
+	
 	//Representa la lista de club que compiten en la liga
 	@Autowired
+	@JoinColumn(name = "club_id")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Club> clubes;
 
 	/**
@@ -108,6 +132,7 @@ public class Liga {
 	public List<Club> getClubes() {
 		return clubes;
 	}
+	
 
 
 	/**

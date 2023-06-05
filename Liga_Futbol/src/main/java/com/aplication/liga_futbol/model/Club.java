@@ -5,6 +5,18 @@ import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+
 /**
  * Esta clase representa un club de futbol en el sistema
  * 
@@ -12,24 +24,46 @@ import org.springframework.stereotype.Component;
  *
  */
 @Component
+@Entity
+@Table(name = "Clubes")
 public class Club {
+	
 	//Representa el id del club
+	@Id
+	@Column(name = "club_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
 	//Representa el nombre del club
+	@Column(name = "nombre")
 	private String nombre;
+	
 	//Representa la fecha de fundacion del club
+	@Column(name = "fecha_fundacion")
 	private LocalDate FechaFundacion;
+	
 	//Representa el estadio que le pertenece al club
 	@Autowired
+	@JoinColumn(name = "estadio_id")
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Estadio estadio;
+	
 	//Representa la cantidad de socios que posee el club
+	@Column(name = "cant_socio")
 	private int cantidadSocios;
+	
 	//Representa la pronvicia en donde se ubica el club
+	@Column(name = "provincia")
 	private String provincia;
+	
 	//Representa el pais donde se ubica el club
+	@Column(name = "pais")
 	private String pais;
+	
 	//Representa la liga donde compite el club
 	@Autowired
+	@JoinColumn(name = "liga_id")
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Liga liga;
 
 	/**

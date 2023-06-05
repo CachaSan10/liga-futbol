@@ -3,6 +3,17 @@ package com.aplication.liga_futbol.model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+
 /**
  * Esta clase representa un estadio de futbol de un equipo en el sistema
  * 
@@ -10,18 +21,32 @@ import org.springframework.stereotype.Component;
  *
  */
 @Component
+@Entity
+@Table(name = "Estadios")
 public class Estadio {
 
 	//Representa el id del estadio
+	@Id
+	@Column(name = "estadio_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
 	//Representa el nombre del estadio
+	@Column(name = "nombre")
 	private String nombre;
+	
 	//Representa la cantidad de personas que puede albergar el estadio
+	@Column(name = "capacidad")
 	private int capacidadPersona;
+	
 	//Representa la direccion donde se ubica el estadio
+	@Column(name = "direccion")
 	private String direccion;
+	
 	//Representa el club que le pertenece el estadio
 	@Autowired
+	@JoinColumn(name = "club_id")
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Club club;
 
 	/**
