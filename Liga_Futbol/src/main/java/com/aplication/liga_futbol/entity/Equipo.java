@@ -1,8 +1,11 @@
-package com.aplication.liga_futbol.model;
+package com.aplication.liga_futbol.entity;
 
 import java.time.LocalDate;
 
 import org.springframework.stereotype.Component;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 /**
  * Esta clase representa un equipo de futbol en el sistema
@@ -11,6 +14,8 @@ import org.springframework.stereotype.Component;
  *
  */
 @Component
+@Entity
+@Table(name = "equipos")
 public class Equipo {
 	private int id;
 	private String nombre;

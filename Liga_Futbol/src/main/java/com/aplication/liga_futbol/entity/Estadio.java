@@ -1,4 +1,4 @@
-package com.aplication.liga_futbol.model;
+package com.aplication.liga_futbol.entity;
 
 import org.springframework.stereotype.Component;
 
