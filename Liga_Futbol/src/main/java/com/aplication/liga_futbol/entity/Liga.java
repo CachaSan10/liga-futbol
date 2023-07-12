@@ -4,6 +4,13 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
 /**
  * Esta clase representa una liga de futbol en el sistema.
  * 
@@ -11,68 +18,99 @@ import org.springframework.stereotype.Component;
  *
  */
 @Component
+@Entity
+@Table(name = "ligas")
 public class Liga {
-	private int id;
+	
+	/**
+	 * Representa el id de la liga
+	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	/**
+	 * Representa el nombre de la liga
+	 */
 	private String nombre;
-	private List<Integer> idEquipos;
+	
+	/**
+	 * Representa la lista de clubes que compiten en la liga
+	 */
+	@OneToMany(mappedBy = "liga")
+	private List<Club> clubes;
 
+	
+	
+	
 	/**
 	 * Constructor por defecto
 	 */
 	public Liga() {
 	}
-
 	
 
 	/**
-	 * Constructor parametrizado
-	 * 
-	 * @param id      representa el id de la liga de futbol
-	 * @param nombre  representa el nombre de la liga de futbol
-	 * @param idEquipos representa la lista de id de equipos que forman parte de la liga
+	 * Constructor Parametrizado
+	 * @param id representa el id de la liga
+	 * @param nombre representa el nombre de la liga
+	 * @param clubes representa la lista de clubes que compiten en la liga
 	 */
-	public Liga(int id, String nombre, List<Integer> idEquipos) {
+	public Liga(Long id, String nombre, List<Club> clubes) {
 		this.id = id;
 		this.nombre = nombre;
-		this.idEquipos = idEquipos;
+		this.clubes = clubes;
 	}
 
 
 
-	public int getId() {
+
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return the nombre
+	 */
 	public String getNombre() {
 		return nombre;
 	}
 
+	/**
+	 * @param nombre the nombre to set
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
-
-
-	public List<Integer> getIdEquipos() {
-		return idEquipos;
+	/**
+	 * @return the clubes
+	 */
+	public List<Club> getClubes() {
+		return clubes;
 	}
 
-
-
-	public void setIdEquipos(List<Integer> idEquipos) {
-		this.idEquipos = idEquipos;
+	/**
+	 * @param clubes the clubes to set
+	 */
+	public void setClubes(List<Club> clubes) {
+		this.clubes = clubes;
 	}
-
 
 
 	@Override
 	public String toString() {
-		return "Liga [id=" + id + ", nombre=" + nombre + ", idEquipos=" + idEquipos + "]";
+		return "Liga [id=" + id + ", nombre=" + nombre + ", clubes=" + clubes + "]";
 	}
-
 
 }
