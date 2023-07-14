@@ -1,11 +1,9 @@
-package com.aplication.liga_futbol.model;
+package com.aplication.liga_futbol.entity;
 
 import java.time.LocalDate;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -43,9 +41,7 @@ public class Club {
 	private LocalDate FechaFundacion;
 	
 	//Representa el estadio que le pertenece al club
-	@Autowired
-	@JoinColumn(name = "estadio_id")
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToOne( mappedBy = "club")
 	private Estadio estadio;
 	
 	//Representa la cantidad de socios que posee el club
@@ -61,9 +57,8 @@ public class Club {
 	private String pais;
 	
 	//Representa la liga donde compite el club
-	@Autowired
 	@JoinColumn(name = "liga_id")
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne( fetch = FetchType.LAZY)
 	private Liga liga;
 
 	/**

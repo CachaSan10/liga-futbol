@@ -1,6 +1,5 @@
-package com.aplication.liga_futbol.model;
+package com.aplication.liga_futbol.entity;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import jakarta.persistence.CascadeType;
@@ -22,7 +21,7 @@ import jakarta.persistence.Table;
  */
 @Component
 @Entity
-@Table(name = "Estadios")
+@Table(name = "estadios")
 public class Estadio {
 
 	//Representa el id del estadio
@@ -44,7 +43,6 @@ public class Estadio {
 	private String direccion;
 	
 	//Representa el club que le pertenece el estadio
-	@Autowired
 	@JoinColumn(name = "club_id")
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Club club;

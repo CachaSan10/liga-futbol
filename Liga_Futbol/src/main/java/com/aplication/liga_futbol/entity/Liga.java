@@ -1,18 +1,14 @@
-package com.aplication.liga_futbol.model;
+package com.aplication.liga_futbol.entity;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -42,9 +38,7 @@ public class Liga {
 	private String pais;
 	
 	//Representa la lista de club que compiten en la liga
-	@Autowired
-	@JoinColumn(name = "club_id")
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "liga")
 	private List<Club> clubes;
 
 	/**
