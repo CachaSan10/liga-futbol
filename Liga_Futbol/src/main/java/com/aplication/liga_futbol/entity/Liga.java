@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -48,7 +49,6 @@ public class Liga {
 	 */
 	public Liga() {
 	}
-	
 
 	/**
 	 * Constructor Parametrizado
@@ -61,8 +61,6 @@ public class Liga {
 		this.nombre = nombre;
 		this.clubes = clubes;
 	}
-
-
 
 
 	/**
@@ -99,6 +97,7 @@ public class Liga {
 	public List<Club> getClubes() {
 		return clubes;
 	}
+
 
 	/**
 	 * @param clubes the clubes to set

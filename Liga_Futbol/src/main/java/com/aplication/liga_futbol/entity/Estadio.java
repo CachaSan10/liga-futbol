@@ -2,6 +2,7 @@ package com.aplication.liga_futbol.entity;
 
 import org.springframework.stereotype.Component;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,6 +20,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "estadios")
 public class Estadio {
+
 
 	/**
 	 * Representa el id del estadio
@@ -45,7 +47,7 @@ public class Estadio {
 	/**
 	 * Representa el club del eatadio
 	 */
-	@OneToOne(mappedBy = "estadio")
+	@OneToOne()
 	private Club club;
 
 	/**
@@ -53,6 +55,7 @@ public class Estadio {
 	 */
 	public Estadio() {
 	}
+
 
 	/**
 	 * Constructor Parametrizado
@@ -69,6 +72,7 @@ public class Estadio {
 		this.direccion = direccion;
 		this.club = club;
 	}
+
 
 	/**
 	 * @return the id

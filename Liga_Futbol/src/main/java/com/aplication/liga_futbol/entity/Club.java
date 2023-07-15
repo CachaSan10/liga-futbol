@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -46,8 +47,8 @@ public class Club {
 	/**
 	 * Representa el estadio del club
 	 */
-	@JoinColumn(name = "esta_id")
-	@OneToOne()
+	@JoinColumn(name = "club_id")
+	@OneToOne(mappedBy = "club")
 	private Estadio estadio;
 	
 	/**
@@ -64,6 +65,7 @@ public class Club {
 	}
 
 
+
 	/**
 	 * @param id representa el id del club
 	 * @param nombre representa el nombre del club
@@ -78,6 +80,7 @@ public class Club {
 		this.estadio = estadio;
 		this.liga = liga;
 	}
+
 
 
 	/**
@@ -104,12 +107,14 @@ public class Club {
 	}
 
 
+
 	/**
 	 * @param nombre the nombre to set
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 
 
 	/**
@@ -120,12 +125,14 @@ public class Club {
 	}
 
 
+
 	/**
 	 * @param fechaFundacion the fechaFundacion to set
 	 */
 	public void setFechaFundacion(LocalDate fechaFundacion) {
 		FechaFundacion = fechaFundacion;
 	}
+
 
 
 	/**
@@ -136,12 +143,14 @@ public class Club {
 	}
 
 
+
 	/**
 	 * @param estadio the estadio to set
 	 */
 	public void setEstadio(Estadio estadio) {
 		this.estadio = estadio;
 	}
+
 
 
 	/**
@@ -160,15 +169,12 @@ public class Club {
 	}
 
 
+
 	@Override
 	public String toString() {
 		return "Club [id=" + id + ", nombre=" + nombre + ", FechaFundacion=" + FechaFundacion + ", estadio=" + estadio
 				+ ", liga=" + liga + "]";
 	}
-	
-	
-
-
-	
+		
 	
 }
