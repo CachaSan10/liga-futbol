@@ -2,14 +2,11 @@ package com.aplication.liga_futbol.entity;
 
 import org.springframework.stereotype.Component;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
+
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -24,27 +21,33 @@ import jakarta.persistence.Table;
 @Table(name = "estadios")
 public class Estadio {
 
-	//Representa el id del estadio
+
+	/**
+	 * Representa el id del estadio
+	 */
 	@Id
-	@Column(name = "estadio_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	
-	//Representa el nombre del estadio
-	@Column(name = "nombre")
+	private Long id;
+
+	/**
+	 * Representa el nombre del estadio
+	 */
 	private String nombre;
-	
-	//Representa la cantidad de personas que puede albergar el estadio
-	@Column(name = "capacidad")
-	private int capacidadPersona;
-	
-	//Representa la direccion donde se ubica el estadio
-	@Column(name = "direccion")
+
+	/**
+	 * Representa la capacidad de fanaticos que puede albergar el estadio
+	 */
+	private int capacidad;
+
+	/**
+	 * Representa la direccion del estadio
+	 */
 	private String direccion;
-	
-	//Representa el club que le pertenece el estadio
-	@JoinColumn(name = "club_id")
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
+	/**
+	 * Representa el club del eatadio
+	 */
+	@OneToOne()
 	private Club club;
 
 	/**
@@ -53,46 +56,39 @@ public class Estadio {
 	public Estadio() {
 	}
 
-	
 
-	
 	/**
 	 * Constructor Parametrizado
-	 * @param id representa el id del estadio.
-	 * @param nombre representa el nombre del estadio.
-	 * @param capacidadPersona representa la cantidad de personas que puede albergar el estadio.
-	 * @param direccion representa la direccion en donde se ubica el estadio.
-	 * @param club representa el club que le pertenece el estadio.
+	 * @param id representa el id del estadio
+	 * @param nombre representa el nombre del estadio
+	 * @param capacidad representa la capacidad del estadio
+	 * @param direccion representa la direccion del estadio
+	 * @param club representa el club del estadio
 	 */
-	public Estadio(int id, String nombre, int capacidadPersona, String direccion, Club club) {
+	public Estadio(Long id, String nombre, int capacidad, String direccion, Club club) {
 		this.id = id;
 		this.nombre = nombre;
-		this.capacidadPersona = capacidadPersona;
+		this.capacidad = capacidad;
 		this.direccion = direccion;
 		this.club = club;
 	}
 
 
-
-
 	/**
-	 * Metodo que retorna el id del estadio.
-	 * @return the id del estadio.
+	 * @return the id
 	 */
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
 	/**
-	 * Metodo que modifica el id del estadio.
 	 * @param id the id to set
 	 */
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
 	/**
-	 * Metodo que retorna el nombre del estadio.
 	 * @return the nombre
 	 */
 	public String getNombre() {
@@ -100,7 +96,6 @@ public class Estadio {
 	}
 
 	/**
-	 * Metodo que modifica el nombre del estadio.
 	 * @param nombre the nombre to set
 	 */
 	public void setNombre(String nombre) {
@@ -108,23 +103,20 @@ public class Estadio {
 	}
 
 	/**
-	 * Metodo que retorna la cantidad de personas que puede albergar el estadio.
-	 * @return the capacidadPersona
+	 * @return the capacidad
 	 */
 	public int getCapacidad() {
-		return capacidadPersona;
+		return capacidad;
 	}
 
 	/**
-	 * Metodo que modifica la cantidad de personas que puede albergar el estadio.
-	 * @param capacidadOPersona the capacidad to set
+	 * @param capacidad the capacidad to set
 	 */
-	public void setCapacidad(int capacidadPersona) {
-		this.capacidadPersona = capacidadPersona;
+	public void setCapacidad(int capacidad) {
+		this.capacidad = capacidad;
 	}
 
 	/**
-	 * Metodo que retorna la direccion del estadio
 	 * @return the direccion
 	 */
 	public String getDireccion() {
@@ -132,7 +124,6 @@ public class Estadio {
 	}
 
 	/**
-	 * Metodo que modifica la direccion del estadio.
 	 * @param direccion the direccion to set
 	 */
 	public void setDireccion(String direccion) {
@@ -140,7 +131,6 @@ public class Estadio {
 	}
 
 	/**
-	 * Metodo que retorna el club que le pertenece el estadio.
 	 * @return the club
 	 */
 	public Club getClub() {
@@ -148,7 +138,6 @@ public class Estadio {
 	}
 
 	/**
-	 * Metodo que modifica el club que le pertenece el estadio.
 	 * @param club the club to set
 	 */
 	public void setClub(Club club) {
@@ -157,9 +146,8 @@ public class Estadio {
 
 	@Override
 	public String toString() {
-		return "Estadio [id=" + id + ", nombre=" + nombre + ", capacidadPersona=" + capacidadPersona + ", direccion=" + direccion
+		return "Estadio [id=" + id + ", nombre=" + nombre + ", capacidad=" + capacidad + ", direccion=" + direccion
 				+ ", club=" + club + "]";
 	}
-
 
 }
